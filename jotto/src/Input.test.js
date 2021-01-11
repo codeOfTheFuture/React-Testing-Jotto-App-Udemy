@@ -3,7 +3,6 @@ import { shallow, ShallowWrapper } from "enzyme";
 
 import { findByTestAttr, storeFactory } from "../test/testUtils";
 import Input, { UnconnectedInput } from "./Input";
-import { guessWord } from "./actions";
 
 /**
  * @function setup
@@ -106,5 +105,9 @@ describe("`guessWord` action creator call", () => {
   test("calls `guessWord with input value as argument`", () => {
     const guessWordArg = guessWordMock.mock.calls[0][0];
     expect(guessWordArg).toBe(guessedWord);
+  });
+
+  test("input box clears on submit", () => {
+    expect(wrapper.state("currentGuess")).toBe("");
   });
 });
